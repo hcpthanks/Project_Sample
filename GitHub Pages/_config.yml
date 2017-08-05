@@ -1,0 +1,14 @@
+markdown: kramdown
+highlighter: pygments
+permalink: /posts/:title.html
+excerpt_separator: "<!-- more -->"
+
+github: hcpthanks
+author: "韩程鹏"
+email: hcpthanks@gmail.com
+name: "韩程鹏个人博客"
+url: http://www.hcpthanks.io
+
+gems:
+ - jekyll-paginate
+theme: jekyll-theme-tactile
