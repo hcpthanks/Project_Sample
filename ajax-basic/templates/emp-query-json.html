@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json ajax 查询</title>
+</head>
+<body>
+	部门: <select name="department" id="department"></select>
+	姓名: <input type="text" id="name">
+	<input type="button" value="查询" id="btnSearch">
+	<div id="emp-list"></div>
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'/departments/',
+			method: 'GET',
+			dataType:'json',
+			success:function(depts){
+				$.each(depts, function(i, item){
+					$('#department').append('<option value="' + item.id + '">'+ item.name +'</option>');
+
+				});
+			}
+		});
+	});
+</script>

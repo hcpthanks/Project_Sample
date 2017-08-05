@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON 示例</title>
+    <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <td>标题:</td>
+            <td><input type="text" id="title"></td>
+
+        </tr>
+        <tr>
+            <td>作者:</td>
+            <td><input type="text" id="author"></td>
+
+        </tr>
+        <tr>
+            <td>定价:</td>
+            <td><input type="text" id="price"></td>
+        </tr>
+         <tr>
+            <td>城市:</td>
+            <td><select name="city" id="city"></select></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="显示本地json数据" id="btnLocalJSON"></td>
+            <td><input type="button" value="载入本地json城市数据" id="btnLocalCity"></td>
+        </tr>
+    </table>
+    <button id="btnParseJson">将字符串转换为JSON对象</button>
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        var book = {
+            'title': 'python入门',
+            'author': 'hcp',
+            'price': 29.33
+        };
+
+        $("#btnLocalJSON").click(function () {
+            $('#title').val(book.title);
+            $('#author').val(book.author);
+            $('#price').val(book.price);
+        });
+
+        $('#btnParseJson').click(function () {
+            var str = '{"title":"flask精讲", "price": 39.00}';
+            var jsonBook = $.parseJSON(str)
+            console.log(jsonBook.title);
+            console.log(jsonBook.price);
+        });
+
+        $('#btnLocalCity').click(function () {
+            var cities = [
+                {'id':1, 'name':'北京'},
+                {'id':2, 'name':'上海'},
+                {'id':3, 'name':'工作'},
+                {'id':4, 'name':'深圳'},
+            ];
+
+            // # 循环城市
+            $('#city').empty();
+            $.each(cities, function (i, item) {
+                $('#city').append('<<option value="'+ item.id + '">'+ item.name + '</option>>');
+            });
+        });
+    });
+</script>
