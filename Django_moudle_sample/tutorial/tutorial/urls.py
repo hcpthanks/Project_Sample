@@ -18,6 +18,7 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    url(r'^feedback/', include('feedback.urls')),
     url(r'^learn/', include('learn.urls')),
     url(r'^hello/', include('hello.urls')),
     url(r'^tutor/$', view=views.tutor, name='tutor'),

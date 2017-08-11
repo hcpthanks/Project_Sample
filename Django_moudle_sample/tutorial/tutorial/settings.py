@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'learn.apps.LearnConfig',
     'orm.apps.OrmConfig',
     'pms.apps.PmsConfig',
+    'feedback.apps.FeedbackConfig',
 ]
 
 MIDDLEWARE = [
