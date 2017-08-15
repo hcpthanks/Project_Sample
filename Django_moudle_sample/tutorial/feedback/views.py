@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Feedback
+from .forms import FeedbackForm
 
 # Create your views here.
 
@@ -23,6 +24,11 @@ def home(request):
         return HttpResponse('问题提交成功')
 
     return render(request, 'feedback/feedback.html', context)
+
+
+def feedback_form(request):
+    form = FeedbackForm(initial={'subject': '反馈系统'})
+    return render(request, 'feedback/feedback_form.html', {'form': form})
 
 
 def get_feedback_data(request):
