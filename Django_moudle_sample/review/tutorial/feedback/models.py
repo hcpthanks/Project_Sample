@@ -20,7 +20,7 @@ class Feedback(models.Model):
     subject = models.CharField('主题', max_length=100)
     category = models.CharField('分类', choices=CATEGORIES, max_length=20)
     username = models.CharField('姓名', max_length=50)
-    email = models.EmailField('邮箱', max_length=200)
+    email = models.EmailField('邮箱', max_length=100)
     screenshot = models.FileField('问题截图')
     description = models.TextField('问题描述')
     subscription = models.BooleanField('是否订阅', default=True)
