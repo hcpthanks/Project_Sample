@@ -7,7 +7,9 @@ urlpatterns = [
     url('^$', view=views.home, name='feedback'),
     url('^form/$', view=views.feedback_form, name='feedback_form'),
     url('^list/$', view=views.feedback_list, name='feedback_list'),
-    url('(?P<fid>\d{1,4})/$', view=views.feedback_editor, name='feedback_editor'),
+    url('^(?P<fid>\d{1,4})/$', view=views.feedback_editor, name='feedback_editor'),
+    url('^edit/(?P<fid>\d{1,4})/$', view=views.feedback_edit, name='feedback_edit'),
+    url('^delete/(?P<fid>\d{1,4})/$', view=views.feedback_delete, name='feedback_delete'),
 
 
 ]

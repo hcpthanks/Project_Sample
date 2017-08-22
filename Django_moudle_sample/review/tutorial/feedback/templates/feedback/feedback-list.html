@@ -21,15 +21,11 @@
                 <td>{{ item.posted_time }}</td>
                 <td>
                     <a href="{% url 'feedback:feedback_editor' fid=item.id %}" class="btn btn-md btn-primary" title="浏览"><i class="fa fa-search"></i></a>
-                    <a href="#" class="btn btn-md btn-primary" title="编辑"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-md btn-primary" title="删除"><i class="fa fa-trash"></i></a>
+                    <a href="{% url 'feedback:feedback_editor' fid=item.id %}" class="btn btn-md btn-primary" title="编辑"><i class="fa fa-pencil"></i></a>
+                    <a href="{% url 'feedback:feedback_delete' fid=item.id %}" class="btn btn-md btn-primary" title="删除"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
-
         {% endfor %}
-
-
-
     </table>
 
 {% endblock %}
