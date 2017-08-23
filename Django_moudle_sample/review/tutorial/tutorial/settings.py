@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'orm.apps.OrmConfig',
     'pms.apps.PmsConfig',
     'feedback.apps.FeedbackConfig',
+    'state.apps.StateConfig',
 ]
 
 MIDDLEWARE = [
