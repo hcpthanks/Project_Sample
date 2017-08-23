@@ -1,0 +1,31 @@
+{% extends 'feedback/base.html' %}
+
+{% block main_content %}
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>主题</th>
+            <th>分类</th>
+            <th>状态</th>
+            <th>订阅资讯</th>
+            <th>发布时间</th>
+            <th>操作</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.subject }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.subscription|yesno:'<span class="label label-success">已订阅</span>, <span class="label label-danger">未订阅</span>'|safe}}</td>
+                <td>{{ item.posted_time }}</td>
+                <td>
+                    <a href="{% url 'feedback:feedback_editor' fid=item.id %}" class="btn btn-md btn-primary" title="浏览"><i class="fa fa-search"></i></a>
+                    <a href="{% url 'feedback:feedback_editor' fid=item.id %}" class="btn btn-md btn-primary" title="编辑"><i class="fa fa-pencil"></i></a>
+                    <a href="{% url 'feedback:feedback_delete' fid=item.id %}" class="btn btn-md btn-primary" title="删除"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

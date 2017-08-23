@@ -17,7 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
 
+
 urlpatterns = [
+    url(r'^state/', include('state.urls')),
     url(r'^feedback/', include('feedback.urls')),
     url(r'^learn/', include('learn.urls')),
     url(r'^hello/', include('hello.urls')),
