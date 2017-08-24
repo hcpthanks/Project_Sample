@@ -28,3 +28,24 @@ def delete_cookie(request):
         return rsp
 
 
+def set_session(request):
+    """设置Session"""
+    request.session['course'] = 'python web fullstack'
+    request.session.set_expiry(300)                #设置过期时间
+    return HttpResponse('写入session["course"]')
+
+
+def get_session(request):
+    """获取session"""
+    course = None
+    if 'course' in request.session:
+        course = request.session.get('course', None)
+    return HttpResponse(course if course else '未找到')
+
+
+def clear_session(request):
+    request.session.flush()
+    return HttpResponse('session清楚完毕')
+
+
+
