@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField('类型名称', max_length=20)
-    description = models.CharField('备注说明', max_length=100)
+    description = models.CharField('备注说明', max_length=100, null=True)
 
     def __str__(self):
         return f'{self.id} { self.name}'
