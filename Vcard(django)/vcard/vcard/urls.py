@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from . import views
+from guestbook import views as gb_views
+# import guestbook
 
 urlpatterns = [
+    url(r'^$', view=views.home, name='home'), 
+    # url(r'^post-message/$', view=views.post_message, name='post_message'),
+    url(r'^post-message/$', view=gb_views.post_message, name='post_message'), 
     url(r'^admin/', admin.site.urls),
+
 ]
