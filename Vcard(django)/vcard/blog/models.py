@@ -37,10 +37,22 @@ class Post(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['-publish']
+        ordering = ['-publish',]
 
 
 class Comment(models.Model):
     """日志评论
     """
-    pass
+    post = models.ForeignKey(Post, related_name='comments')
+    name = models.CharField('用户名', max_length=20)
+    email = models.EmailField('邮箱', max_length=200)
+    content = models.TextField('评论')
+    activate = models.BooleanField('有效状态', default=True)
+    created = models.DateTimeField('提交时间', auto_now_add=True)
+
+    class Meta:
+        ordering = ('-created',)
+
+    def __str__(self):
+        return f'{self.name} 评论至{self.post}'
+
