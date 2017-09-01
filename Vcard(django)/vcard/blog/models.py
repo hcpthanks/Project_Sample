@@ -15,6 +15,17 @@ class Category(models.Model):
         return self.name
 
 
+class PostPublishedManager(models.Manager):
+    """
+    博客日志管理器
+    过滤状态为published 日志信息
+    """
+    def get_queryset(self):
+        return super(PostPublishedManager, self).get_queryset().filter(status='published')
+
+
+
+
 class Post(models.Model):
     """日志文章
     """
@@ -26,12 +37,18 @@ class Post(models.Model):
     slug = models.SlugField('URL缩写', max_length=100, unique_for_date='publish')
     category = models.ForeignKey(Category, related_name='blog_posts')
     author = models.ForeignKey(User, related_name='blog_posts') 
-    image = models.ImageField('图片')
+    image = models.ImageField('图片', null=True, blank=True, upload_to='uploads/')
     body = models.TextField('正文')
     publish = models.DateTimeField('发布时间', default=timezone.now)
     created = models.DateTimeField('创建时间', auto_now_add=True)
     updated = models.DateTimeField('更新时间', auto_now=True)
     status = models.CharField('发布状态', max_length=50, choices=STATUS_CHOICES, default='draft')
+    
+    objects = models.Manager()
+    published_objects = PostPublishedManager()
+
+
+
 
     def __str__(self):
         return self.title
@@ -45,7 +62,7 @@ class Comment(models.Model):
     """
     post = models.ForeignKey(Post, related_name='comments')
     name = models.CharField('用户名', max_length=20)
-    email = models.EmailField('邮箱', max_length=200)
+    email = models.EmailField('邮箱', max_length=200, blank=True)
     content = models.TextField('评论')
     activate = models.BooleanField('有效状态', default=True)
     created = models.DateTimeField('提交时间', auto_now_add=True)

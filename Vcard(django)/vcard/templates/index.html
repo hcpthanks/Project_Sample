@@ -48,7 +48,7 @@
                 </ul>
             </div>
         </div>
-        <a class="blog-link" href="blog.html">
+        <a class="blog-link" href="{% url 'blog:blog_list' %}">
             <span class="icon"></span>
             <span class="label">博客</span>
         </a>
@@ -526,5 +526,6 @@
     <div class="item-border"><span></span></div>
 </section>
 <!-- /#contact -->
+
 
 {% endblock content %}
