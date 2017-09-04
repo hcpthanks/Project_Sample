@@ -32,23 +32,16 @@
                         </div>
                         <div class="entry-text">
                             <div>
-                                <p>{{ post.body|truncatewords:26|safe}}</p>
+                                <p>{{ post.body|striptags|truncatewords:26|safe}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <footer><a class="entry-more btn" href="{{ post.get_absolute_url }}">阅读全文</a></footer>
             </article>
-            {% endfor %},
+            {% endfor %} {% include "pagination.html" %}
 
 
-
-            <div id="pageination" class="clearfix">
-                <ul class="page-numbers">
-                    <li><span class="page-numbers current">1</span></li>
-                    <li><a class="page-numbers" href="#">2</a></li>
-                </ul>
-            </div>
         </div>
 
         <div class="col230 fl-right">
